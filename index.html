@@ -37,13 +37,14 @@
   <!-- class="needs-validation was-validated" -->
   <div class="container border border-info rounded pb-4 mb-4">
     <h5 class="text-center text-warning pt-2" id="edit-target-name"></h5>
-    <form id="new-score-form" class="">
+    <form id="new-score-form" class="needs-validation" novalidate>
       <!-- new score title -->
-      <div class="row g-3">
+      <div class="row g-3 mb-2">
         <div class="col-sm-4 ">
           <label for="new-score-title" class="form-label">Title</label>
           <input name="title" type="text" class="form-control" id="new-score-title" placeholder="Insert a title"
-            value="">
+            required>
+          <div class="invalid-feedback">Please provide a title</div>
         </div>
         <!-- new score composer -->
         <div class="col-sm-4 ">
@@ -55,10 +56,12 @@
                 <i class="fas fa-plus-square"></i>
               </button>
             </div>
-            <select name="composer" class="custom-select d-block" id="new-score-composer">
+            <select name="composer" class="custom-select d-block" id="new-score-composer" required>
               <!-- options from arrays will mount here -->
             </select>
+            <div class="invalid-feedback">Please select a composer</div>
           </div>
+
         </div>
 
         <!-- new score instrumentPicker -->
@@ -75,10 +78,11 @@
             <select name="instrumentPicker" class="custom-select d-block" id="new-score-instrument-picker">
               <!-- options from arrays will mount here -->
             </select>
+
           </div>
         </div>
       </div>
-      <div class="row g-3">
+      <div class="row g-3 mb-3">
         <!-- new score style -->
         <div class="col-sm-3">
           <label for="new-score-style" class="form-label">
@@ -90,38 +94,41 @@
                 <i class="fas fa-plus-square"></i>
               </button>
             </div>
-            <select name="style" class="custom-select d-block" id="new-score-style">
+            <select name="style" class="custom-select d-block" requires id="new-score-style" required>
               <!-- options from arrays will mount here -->
             </select>
+            <div class="invalid-feedback">Please select a style</div>
           </div>
         </div>
         <div class="col-sm-3">
           <label for="new-score-owner" class="form-label">Owner</label>
-          <input name="owner" type="text" class="form-control" id="new-score-owner" placeholder="Owner">
+          <input name="owner" type="text" class="form-control" id="new-score-owner" placeholder="Owner" required>
+          <div class="invalid-feedback">An owner is required</div>
         </div>
         <div class="col-sm-2">
           <label for="new-score-stock" class="form-label">Stock</label>
           <input name="stock" type="number" class="form-control" id="new-score-stock" placeholder="0">
+
         </div>
         <!-- new score instrumentation -->
         <div class="col-sm-4">
           <label for="new-score-instrumentation" class="form-label">Instrumentation
-
           </label>
           <div class="input-group">
-
             <input name="instrumentation" type="text" class="form-control" id="new-score-instrumentation"
-              placeholder="Add instruments.." readonly />
+              placeholder="Add instruments.." readonly required />
+
             <div class="input-group-append">
               <button type="button" class="btn btn-warning btn-sm" id="clear-instrumentation-button">
                 <i class="fas fa-trash-alt"></i>
               </button>
             </div>
+            <div class="invalid-feedback">Select at least one instrument</div>
           </div>
         </div>
       </div>
-      <!-- BUttons -->
-      <div class="row g-3">
+      <!-- Buttons -->
+      <div class="row g-3 mb-3">
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
           <button class="mb-n4 w-100 btn btn-secondary" type="reset">Reset</button>

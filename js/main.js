@@ -48,18 +48,44 @@ app.renderComposerSelect();
 //-----------------------Form Submit------------------------------------
 
 const newScoreForm = document.getElementById("new-score-form");
-
+const newScoreInstrumentation = document.getElementById(
+  "new-score-instrumentation",
+);
+const instrumentsSelect = document.getElementById(
+  "new-score-instrument-picker",
+);
 newScoreForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(newScoreForm);
   const data = Object.fromEntries(formData);
   console.log("data", data);
+  console.log("valid?", newScoreForm.checkValidity());
+
+  //Bootstrap validation
+  if (!newScoreForm.checkValidity() || newScoreInstrumentation.value === "") {
+    e.stopPropagation();
+    newScoreForm.classList.add("was-validated");
+    if (newScoreInstrumentation.value === "") {
+      newScoreInstrumentation.classList.remove("is-valid");
+      newScoreInstrumentation.classList.add("is-invalid");
+    } else {
+      newScoreInstrumentation.classList.remove("is-invalid");
+      newScoreInstrumentation.classList.add("is-valid");
+    }
+    instrumentsSelect.classList.remove("was-validated");
+    return;
+  } else {
+    newScoreForm.classList.remove("was-validated");
+    newScoreInstrumentation.classList.remove("is-invalid");
+    newScoreInstrumentation.classList.remove("is-valid");
+  }
+
   const addedScore = new Score({
     title: data.title,
     style: data.style,
     composer: data.composer,
     instrumentation: data.instrumentation.split(", "),
-    stock: data.stock,
+    stock: data.stock === "" ? 0 : data.stock * 1,
     owner: data.owner,
   });
   console.log(addedScore);
@@ -160,9 +186,6 @@ styleModalList.addEventListener("click", (e) => {
 
 //----------------------------------add instrument to instrumentation---------------------
 
-const instrumentsSelect = document.getElementById(
-  "new-score-instrument-picker",
-);
 const instrumentationInput = document.getElementById(
   "new-score-instrumentation",
 );
@@ -173,6 +196,7 @@ instrumentsSelect.addEventListener("input", (e) => {
     instrumentationInput.value += ", ";
   }
   instrumentationInput.value += e.target.value;
+  instrumentsSelect.value = "";
 });
 
 document

@@ -1,3 +1,9 @@
+/* Favicon Icons mess with the buttons */
 button > i {
   pointer-events: none;
+}
+/* stopping validation appearing on this */
+#new-score-instrument-picker {
+  border-color: #ced4da;
+  background: none;
 }
