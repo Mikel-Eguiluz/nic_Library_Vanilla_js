@@ -1,7 +1,10 @@
 import Score from "./Score.js";
 import App from "./App.js";
 
-//-------------------------------------------Initialize-----------------------------
+/***************************************
+ ************ Initialize ***************
+ ***************************************/
+
 const appData = JSON.parse(localStorage.getItem("app"));
 const app = new App();
 
@@ -43,9 +46,13 @@ app.renderStyleSelect();
 app.renderInstrumentsSelect();
 app.renderComposerSelect();
 
-//--------------------------------------------Listeners ----------------------------
+/***************************************
+ ************ Listeners ****************
+ **************************************/
 
-//-----------------------Form Submit------------------------------------
+/***************************************
+ *********** Form Submit ***************
+ **************************************/
 
 const newScoreForm = document.getElementById("new-score-form");
 const newScoreInstrumentation = document.getElementById(
@@ -104,7 +111,11 @@ newScoreForm.addEventListener("reset", (e) => {
   newScoreBtn.innerText = "Add Score";
   toBeUpdatedId = null;
 });
-//---------------------Update & delete buttons----------------------------------
+
+/**************************************
+ ********Update & delete buttons********
+ **************************************/
+
 const tableBodyNode = document.getElementById("score-table-body");
 const updateInfo = document.getElementById("edit-target-name");
 const newScoreBtn = document.getElementById("new-score-btn");
@@ -133,7 +144,10 @@ tableBodyNode.addEventListener("click", (e) => {
   }
 });
 
-//----------------------------add/delete composer----------------------------------
+/**************************************
+ **********add/delete composer**********
+ **************************************/
+
 const addComposerBtn = document.getElementById("add-composer-btn");
 const addComposerInput = document.getElementById("add-composer-input");
 const composerModalList = document.getElementById("composer-modal-list");
@@ -150,7 +164,9 @@ composerModalList.addEventListener("click", (e) => {
   }
 });
 
-//----------------------------add/delete instrument----------------------------------
+/**************************************
+ *********add/delete instrument*********
+ **************************************/
 
 const addInstrumentBtn = document.getElementById("add-instrument-btn");
 const addInstrumentInput = document.getElementById("add-instrument-input");
@@ -167,7 +183,11 @@ instrumentModalList.addEventListener("click", (e) => {
     app.deleteInstrumentByName(e.target.dataset.name);
   }
 });
-//----------------------------add/delete style----------------------------------
+
+/*****************************************
+ ***********add/delete style***************
+ *****************************************/
+
 const addStyleBtn = document.getElementById("add-style-btn");
 const addStyleInput = document.getElementById("add-style-input");
 const styleModalList = document.getElementById("style-modal-list");
@@ -184,7 +204,9 @@ styleModalList.addEventListener("click", (e) => {
   }
 });
 
-//----------------------------------add instrument to instrumentation---------------------
+/**************************************
+ ***add instrument to instrumentation***
+ **************************************/
 
 const instrumentationInput = document.getElementById(
   "new-score-instrumentation",

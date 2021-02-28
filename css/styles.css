@@ -5,5 +5,22 @@ button > i {
 /* stopping validation appearing on this */
 #new-score-instrument-picker {
   border-color: #ced4da;
-  background: none;
+  background: white;
+}
+.bg-image {
+  position: fixed;
+  left: -5;
+  z-index: -10;
+  display: block;
+  width: 105%;
+  min-height: 105vh;
+  filter: blur(1.5px);
+  background-color: #222;
+  background-image: url("/assets/images/background.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body {
+  color: #330401;
 }
